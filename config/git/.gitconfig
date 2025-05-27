@@ -1,0 +1,65 @@
+[user]
+	name = Dev Kraken
+	email = soman@devkraken.com
+
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nvim
+	autocrlf = input
+	filemode = false
+
+[credential]
+	helper = cache --timeout=3600
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[pull]
+	rebase = false
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	ca = commit -a
+	cam = commit -am
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = !gitk
+	lg = log --oneline --graph --decorate --all
+	ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[diff]
+	tool = vimdiff
+
+[merge]
+	tool = vimdiff
+
+[rerere]
+	enabled = true 

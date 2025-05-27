@@ -1,0 +1,128 @@
+# Window configuration
+[window]
+# decorations = "full"
+dynamic_title = true
+option_as_alt = "Both"
+startup_mode = "Windowed"  # Uncomment if you want maximized
+decorations = "Buttonless"
+
+[window.dimensions]
+columns = 140
+lines = 30
+
+[window.padding]
+x = 4
+y = 4
+
+# Font configuration
+[font]
+size = 14
+
+[font.normal]
+family = "Iosevka Term"
+style = "Regular"
+
+[font.bold]
+family = "Iosevka Term"
+style = "Bold"
+
+[font.italic]
+family = "Iosevka Term"
+style = "Italic"
+
+[font.bold_italic]
+family = "Iosevka Term"
+style = "Bold Italic"
+
+[font.offset]
+x = 1 
+y = 2
+
+[font.glyph_offset]
+x = 1
+y = 1
+
+# Cursor configuration
+[cursor]
+blink_interval = 500
+blink_timeout = 5
+unfocused_hollow = false
+thickness = 0.0
+
+[cursor.style]
+blinking = "Off"
+shape = "Beam"
+
+# Mouse configuration
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+# Selection configuration
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+save_to_clipboard = true
+
+# Shell configuration
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-l"]
+
+# Bell configuration
+[bell]
+animation = "EaseOutExpo"
+duration = 0
+
+# Colors configuration
+[colors]
+draw_bold_text_with_bright_colors = true
+
+# Scrolling configuration
+[scrolling]
+history = 10000
+multiplier = 3
+
+# Key bindings
+[[keyboard.bindings]]
+key = "V"
+mods = "Control|Shift"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "Insert"
+mods = "Shift"
+action = "PasteSelection"
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Control"
+action = "ResetFontSize"
+
+[[keyboard.bindings]]
+key = "Equals"
+mods = "Control"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Control"
+action = "DecreaseFontSize"
+
+[general]
+import = [
+  "~/.config/alacritty/themes/catppuccin_mocha.toml"
+]
+
+# Terminal settings
+[env]
+TERM = "xterm-256color"
+
+[terminal]

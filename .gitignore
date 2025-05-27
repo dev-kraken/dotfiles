@@ -1,0 +1,196 @@
+# ==========================================
+# Dev-Kraken's Dotfiles .gitignore
+# ==========================================
+
+# ====================
+# Editor & IDE Files
+# ====================
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*.swo
+*~
+.*.swp
+.*.swo
+
+# ====================
+# OS Generated Files
+# ====================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ====================
+# Plugin/Package Manager Files
+# ====================
+# Tmux Plugin Manager
+config/tmux/plugins/
+!config/tmux/plugins/.gitkeep
+
+# Neovim Lazy.nvim
+config/nvim/lazy-lock.json
+config/nvim/.lazy/
+config/nvim/plugin/packer_compiled.lua
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ====================
+# Temporary & Cache Files
+# ====================
+*.tmp
+*.temp
+*.bak
+*.backup
+*.cache
+.cache/
+cache/
+tmp/
+temp/
+.tmp/
+.temp/
+
+# ====================
+# Log Files
+# ====================
+*.log
+logs/
+.logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ====================
+# Environment & Secret Files
+# ====================
+.env
+.env.local
+.env.*.local
+.secrets
+*.key
+*.pem
+*.p12
+*.p8
+*.secret
+
+# ====================
+# Build & Compiled Files
+# ====================
+*.o
+*.a
+*.la
+*.lo
+*.so
+*.dylib
+*.exe
+*.dll
+*.class
+*.jar
+*.war
+*.ear
+*.tar.gz
+*.zip
+*.rar
+
+# ====================
+# Development Tools
+# ====================
+.gdb_history
+.lldb_history
+.viminfo
+.nviminfo
+tags
+.tags
+TAGS
+.ctags
+
+# ====================
+# Backup & Recovery Files
+# ====================
+backup/
+backups/
+.backup/
+*.orig
+*.rej
+
+# ====================
+# Personal & Local Files
+# ====================
+*.personal
+*.private
+*.local
+local/
+personal/
+private/
+
+# ====================
+# Test Coverage & Reports
+# ====================
+coverage/
+.coverage
+.nyc_output
+*.lcov
+
+# ====================
+# Runtime & Process Files
+# ====================
+*.pid
+*.seed
+*.pid.lock
+
+# ====================
+# Session & History Files
+# ====================
+.bash_history
+.zsh_history
+.python_history
+.node_repl_history
+.mysql_history
+.psql_history
+
+# ====================
+# Custom Exclusions
+# ====================
+# Add any project-specific ignores below this line 
