@@ -25,7 +25,7 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
-  
+
   # Development tools
   docker
   docker-compose
@@ -33,13 +33,13 @@ plugins=(
   terraform
   aws
   golang
-  
+
   # Language support
   npm
   node
   python
   pip
-  
+
   # Additional utilities
   vscode
   extract
@@ -122,6 +122,7 @@ export EZA_COLORS="$EZA_COLORS:ur=1;32:uw=1;33:ux=1;31:ue=1;31:gr=1;32:gw=1;33:g
 # Zoxide configuration (smart directory navigation)
 if command -v zoxide > /dev/null; then
   eval "$(zoxide init zsh)"
+  alias cd='z'  # Use zoxide's smart navigation for `cd`
 fi
 
 # ==========================================
@@ -175,19 +176,19 @@ if command -v eza > /dev/null; then
   alias ll="eza --long --header --group --icons --group-directories-first --git"
   alias la="eza --long --header --group --icons --all --group-directories-first"
   alias l="eza --long --header --group --icons --group-directories-first"
-  
+
   # Sorting options
   alias lx="eza --long --header --group --icons --sort=extension --group-directories-first"
   alias lk="eza --long --header --group --icons --sort=size --group-directories-first"
   alias lc="eza --long --header --group --icons --sort=created --group-directories-first"
   alias lm="eza --long --header --group --icons --sort=modified --group-directories-first"
   alias ln="eza --long --header --group --icons --sort=name --group-directories-first"
-  
+
   # Specialized views
   alias ld="eza --long --header --group --icons --only-dirs --group-directories-first"
   alias lf="eza --long --header --group --icons --only-files"
   alias l.="eza --long --header --group --icons --all | grep --color=always '^\\.'"
-  
+
   # Tree views
   alias lt="eza --tree --level=2 --icons --group-directories-first"
   alias lt1="eza --tree --level=1 --icons --group-directories-first"
@@ -195,7 +196,7 @@ if command -v eza > /dev/null; then
   alias lt3="eza --tree --level=3 --icons --group-directories-first"
   alias lt4="eza --tree --level=4 --icons --group-directories-first"
   alias ltt="eza --tree --icons --group-directories-first"
-  
+
   # Recursive views
   alias lr="eza --recurse --long --header --group --icons --group-directories-first"
   alias lra="eza --recurse --long --header --group --icons --all --group-directories-first"
@@ -399,11 +400,11 @@ ghopen() {
     echo "Not a git repository"
     return 1
   fi
-  
+
   # Clean up URL for opening in browser
   remote_url=${remote_url/git@github.com:/https:\/\/github.com\/}
   remote_url=${remote_url%.git}
-  
+
   # Use xdg-open for Linux, open for macOS
   if command -v xdg-open &> /dev/null; then
     xdg-open "$remote_url"
@@ -417,20 +418,20 @@ ghopen() {
 # Enhanced SSL certificate generation function
 devkrakenssl() {
     local domain=$1
-    
+
     if [ -z "$domain" ]; then
         echo "Error: Domain name is required"
         echo "Usage: devkrakenssl domain.local"
         return 1
     fi
-    
+
     # Create directory for certificates if it doesn't exist
     mkdir -p ~/.local/share/certs
-    
+
     # Generate certificates for the domain
     echo "Generating SSL certificates for $domain and *.$domain..."
     sudo mkcert -key-file $HOME/.local/share/certs/$domain-key.pem -cert-file $HOME/.local/share/certs/$domain.pem $domain "*.$domain"
-    
+
     # Add domain to /etc/hosts if not already there
     if ! grep -q "$domain" /etc/hosts; then
         echo "Adding $domain to /etc/hosts..."
@@ -443,7 +444,7 @@ devkrakenssl() {
     else
         echo "$domain already exists in /etc/hosts"
     fi
-    
+
     echo ""
     echo "Certificate created successfully!"
     echo "Certificate: ~/.local/share/certs/$domain.pem"
@@ -457,11 +458,11 @@ project() {
     echo "Usage: project <project_name>"
     return 1
   fi
-  
+
   local project_dir="$HOME/Projects/$1"
   mkdir -p "$project_dir"
   cd "$project_dir"
-  
+
   # Initialize git if not already a repo
   if [ ! -d ".git" ]; then
     git init
@@ -470,7 +471,7 @@ project() {
     echo ".env" >> .gitignore
     echo ".DS_Store" >> .gitignore
   fi
-  
+
   echo "Project $1 ready at $project_dir"
 }
 
@@ -478,17 +479,17 @@ project() {
 sysupdate() {
   echo "🔄 Updating system packages..."
   sudo pacman -Syu
-  
+
   if command -v yay &> /dev/null; then
     echo "🔄 Updating AUR packages..."
     yay -Sua
   fi
-  
+
   if command -v flatpak &> /dev/null; then
     echo "🔄 Updating Flatpak packages..."
     flatpak update
   fi
-  
+
   echo "✅ System update complete!"
 }
 
@@ -557,28 +558,28 @@ alias welcome="devkraken_welcome"
 devkraken_should_show_welcome() {
   # Don't show if explicitly disabled
   [[ "$DEVKRAKEN_WELCOME" == "false" || "$DEVKRAKEN_WELCOME" == "off" || "$DEVKRAKEN_WELCOME" == "no" ]] && return 1
-  
+
   # Don't show if in quiet mode
   [[ "$DEVKRAKEN_WELCOME" == "quiet" ]] && return 1
-  
+
   # Don't show if we're in tmux (prevents multiple welcome messages)
   [[ -n "$TMUX" ]] && return 1
-  
+
   # Don't show if this is not an interactive shell
   [[ ! -o interactive ]] && return 1
-  
+
   # Don't show if stdin is not a terminal (script execution, etc.)
   [[ ! -t 0 ]] && return 1
-  
+
   # Don't show if we're in a subshell or background process
   [[ "$SHLVL" -gt 1 ]] && return 1
-  
+
   # Don't show if Powerlevel10k instant prompt is disabled and we want to be extra cautious
   [[ "$POWERLEVEL9K_INSTANT_PROMPT" == "off" ]] && return 1
-  
+
   # Don't show if we're being sourced from another script
   [[ "${BASH_SOURCE[0]}" != "${0}" ]] && return 1
-  
+
   # Show welcome message
   return 0
 }

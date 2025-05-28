@@ -53,12 +53,14 @@ $RECYCLE.BIN/
 # ====================
 # Tmux Plugin Manager
 config/tmux/plugins/
+config/tmux/.tmux
 !config/tmux/plugins/.gitkeep
 
 # Neovim Lazy.nvim
 config/nvim/lazy-lock.json
 config/nvim/.lazy/
 config/nvim/plugin/packer_compiled.lua
+config/nvim/undo/
 
 # Node.js
 node_modules/
@@ -194,3 +196,4 @@ coverage/
 # Custom Exclusions
 # ====================
 # Add any project-specific ignores below this line 
+/config/zsh/.gitconfig
